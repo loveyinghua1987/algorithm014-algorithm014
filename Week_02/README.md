@@ -3,7 +3,7 @@
 要点:
 1. 哈希表
 2. 二叉树的DFS遍历（前、中、后序）和BFS遍历（层次遍历）
-   - **前、中、后序遍历通用迭代BFS模板**
+   - **前、中、后序遍历通用迭代模板**
     ``` 
     #中序遍历
     def inorderTraversal(self, root: TreeNode) -> List[int]:
@@ -39,7 +39,7 @@
 		root = node.left         #区别在这里
 	return res[::-1]             #区别在这里
     ```
-    - **前、后序BFS遍历常用模板**
+    - **前、后序遍历常用模板**
     ``` 
     #前序遍历
     def preorderTraversal(self, root: TreeNode) -> List[int]:
@@ -68,7 +68,7 @@
 			stack.append(root.right)
 	return res[::-1]
     ```
-    - **前、中、后序通用递归DFS模板**
+    - **前、中、后序通用递归模板**
     ``` 
     #前序遍历
     def preorderTraversal(self, root: TreeNode) -> List[int]:
