@@ -8,23 +8,37 @@
 # @lc code=start
 class Solution:
     def trap(self, height: List[int]) -> int:
-        if not height: return 0
-        stack = [0]
+        #方法2：双指针
+        i, j = 0, len(height)-1
+        max_left, max_right = 0, 0
         water = 0
-        for i in range(1, len(height)):
-            if stack and height[i] > height[stack[0]]:
-                temp = stack[0]
-                while stack:
-                    left = stack.pop()
-                    water = water + height[temp] - height[left]
-            stack.append(i)
-        right = stack.pop()
-        while stack:
-            if height[stack[-1]] > height[right]:
-                right = stack.pop()
-            else:
-                water = water + height[right] - height[stack.pop()]
+        while i < j:
+            if height[i] < height[j]:  #height[i] < height[j] <= max_right
+                if height[i] >= max_left: # max_left <= height[i] < height[j] <= max_right
+                    max_left = height[i]
+                else: #height[i] < max_left  
+                    water += max_left - height[i]
+                i += 1
+            else:# height[i] >= height[j]
+                if height[j] >= max_right:#max_left >= height[i] >= height[j] >= max_right
+                    max_right = height[j]
+                else:
+                    water +=max_right - height[j]
+                j -= 1
         return water
 
+        '''
+        #方法1：栈
+        stack = []
+        water = 0
+        for i in range(len(height)):
+            while stack and height[i] > height[stack[-1]]:
+                j = stack.pop()
+                if not stack:
+                    continue
+                water +=( min(height[stack[-1]], height[i]) - height[j])*(i - stack[-1]-1)
+            stack.append(i)
+        return water
+        '''
 
 # @lc code=end
