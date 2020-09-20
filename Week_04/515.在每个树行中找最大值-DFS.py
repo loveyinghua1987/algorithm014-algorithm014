@@ -20,7 +20,7 @@ class Solution:
                 return
             if len(res) <= depth:
                 res.append(float('-inf'))
-            res[-1] = max(res[-1], root.val)
+            res[depth] = max(res[depth], root.val)
             dfs(root.left, depth + 1)
             dfs(root.right, depth + 1)
 

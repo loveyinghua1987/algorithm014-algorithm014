@@ -21,7 +21,7 @@ class Solution:
                 if ten > 0 and five > 0:
                     ten -= 1
                     five -= 1
-                elif five > 3:
+                elif five >= 3:
                     five -= 3
                 else:
                     return False
