@@ -444,7 +444,7 @@
         first_match = bool(text) and pattern[0] in {text[0], '.'}
         if len(pattern) >=2 and pattern[1] == '*':
             #发现'*'通配符
-            return isMatch(text, pattern[2:]) or first_match and isMatch(text[1:], pattern)
+            return isMatch(text, pattern[2:]) or (first_match and isMatch(text[1:], pattern))
             #解释：如果发现字符和'*'结合，
             #或者匹配该字符0次，然后跳过该字符和'*'
             #或者当pattern[0]和text[0]和pattern[0]匹配后，移动text
